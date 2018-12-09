@@ -21,6 +21,7 @@ namespace FixMe.Model
         public string Address { get; set; }
         public int TimeFrame { get; set; }
         public string Image { get; set; }
+        public string Status { get; set; }
         public UserModel User { get; set; }
     }
 

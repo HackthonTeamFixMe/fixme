@@ -20,7 +20,7 @@ namespace FixMe.Database.DBModel
         public System.DateTime DonatedOn { get; set; }
         public int DonatedBy { get; set; }
     
-        public virtual DonationRequest DonationRequest { get; set; }
         public virtual User User { get; set; }
+        public virtual DonationRequest DonationRequest { get; set; }
     }
 }

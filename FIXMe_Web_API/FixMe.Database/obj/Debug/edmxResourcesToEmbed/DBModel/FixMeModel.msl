@@ -15,9 +15,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Donations">
+      <EntityTypeMapping TypeName="FixMeModel.Donation">
+        <MappingFragment StoreEntitySet="Donation">
+          <ScalarProperty Name="DonatedBy" ColumnName="DonatedBy" />
+          <ScalarProperty Name="DonatedOn" ColumnName="DonatedOn" />
+          <ScalarProperty Name="AmountDonated" ColumnName="AmountDonated" />
+          <ScalarProperty Name="DonationRequestId" ColumnName="DonationRequestId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DonationRequests">
       <EntityTypeMapping TypeName="FixMeModel.DonationRequest">
         <MappingFragment StoreEntitySet="DonationRequest">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -31,17 +43,6 @@
           <ScalarProperty Name="AmountLeft" ColumnName="AmountLeft" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Donations">
-      <EntityTypeMapping TypeName="FixMeModel.Donation">
-        <MappingFragment StoreEntitySet="Donation">
-          <ScalarProperty Name="DonatedBy" ColumnName="DonatedBy" />
-          <ScalarProperty Name="DonatedOn" ColumnName="DonatedOn" />
-          <ScalarProperty Name="AmountDonated" ColumnName="AmountDonated" />
-          <ScalarProperty Name="DonationRequestId" ColumnName="DonationRequestId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

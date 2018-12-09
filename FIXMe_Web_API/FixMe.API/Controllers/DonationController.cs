@@ -98,6 +98,22 @@ namespace FixMe.API.Controllers
             }
         }
 
+        [HttpGet]
+        [ResponseType(typeof(List<DonationRequestModel>))]
+        [Route("api/donations/user/{id}")]
+        public IHttpActionResult GetDonationsByUser(int id)
+        {
+            try
+            {
+                List<DonationRequestModel> donationsRequired = _dontaion.GetDonationsByUser(id);
+                return Json(new { success = true, donationsRequired });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
         [HttpPost]
         [ResponseType(typeof(string))]
         [Route("api/donation/create")]

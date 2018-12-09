@@ -17,8 +17,8 @@ namespace FixMe.Database.DBModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.DonationRequests = new HashSet<DonationRequest>();
             this.Donations = new HashSet<Donation>();
+            this.DonationRequests = new HashSet<DonationRequest>();
         }
     
         public int Id { get; set; }
@@ -31,8 +31,8 @@ namespace FixMe.Database.DBModel
         public System.DateTime RegisteredOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonationRequest> DonationRequests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donation> Donations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonationRequest> DonationRequests { get; set; }
     }
 }

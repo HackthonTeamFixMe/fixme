@@ -26,7 +26,7 @@ namespace FixMe.Database.DBModel
         }
     
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<DonationRequest> DonationRequests { get; set; }
         public virtual DbSet<Donation> Donations { get; set; }
+        public virtual DbSet<DonationRequest> DonationRequests { get; set; }
     }
 }

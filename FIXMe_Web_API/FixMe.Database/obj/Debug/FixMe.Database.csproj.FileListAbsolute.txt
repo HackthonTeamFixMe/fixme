@@ -9,3 +9,4 @@ E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\EntityFramework.SqlServer.
 E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\EntityFramework.xml
 E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\EntityFramework.SqlServer.xml
 E:\Projects - Repo\FixMe.API\FixMe.Database\obj\Debug\FixMe.Database.csproj.CopyComplete
+E:\Projects - Repo\FixMe.API\FixMe.Database\obj\Debug\FixMe.Database.csprojAssemblyReference.cache

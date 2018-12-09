@@ -28,6 +28,7 @@
     <Property Name="CreatedBy" Type="int" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="IsCompleted" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="User">
     <Key>

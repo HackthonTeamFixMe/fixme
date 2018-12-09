@@ -34,6 +34,7 @@ namespace FixMe.Repository
                     TimeFrame = model.TimeFrame,
                     Title = model.Title,
                     AmountLeft = 0,
+                    Status = "Un Verified",
                     IsCompleted = false
                 };
 
@@ -65,6 +66,7 @@ namespace FixMe.Repository
                         Longitude = donationRequest.Longitude,
                         TimeFrame = donationRequest.TimeFrame,
                         Title = donationRequest.Title,
+                        Status = donationRequest.Status,
                         UserId = donationRequest.User.Id,
                         User = new UserModel
                         {
@@ -106,10 +108,60 @@ namespace FixMe.Repository
             using (var db = new FixMeEntities())
             {
                 var donationRequest = db.DonationRequests.Find(Id);
-                donationRequest.AmountLeft = amountDonated;
+                donationRequest.AmountLeft = donationRequest.AmountLeft + amountDonated;
                 db.SaveChanges();
             }
         }
 
+        public List<DonationRequestModel> GetDonationsByUser(int id)
+        {
+            using (var db = new FixMeEntities())
+            {
+                var donations = db.Donations.Where(x => x.DonatedBy == id).ToList();
+                donations = donations.GroupBy(x => x.DonationRequestId)
+                                  .Select(g => g.First())
+                                  .ToList();
+
+
+                var requestList = new List<DonationRequestModel>();
+
+                foreach (var donation in donations)
+                {
+                    var donationRequest = db.DonationRequests.FirstOrDefault(x => x.Id == donation.DonationRequestId);
+
+                    if(donationRequest != null)
+                    {
+                        double? percentage = (Convert.ToDouble(donationRequest.AmountLeft) / Convert.ToDouble(donationRequest.Amount)) * 100.0;
+                        var request = new DonationRequestModel
+                        {
+                            DonationRequestId = donationRequest.Id,
+                            Address = donationRequest.Address,
+                            Amount = donationRequest.Amount,
+                            AmountRecieved = donationRequest.AmountLeft,
+                            AmountCompletedPercentage = percentage,
+                            Category = donationRequest.Category,
+                            Description = donationRequest.Description,
+                            Image = donationRequest.Image,
+                            Latitude = donationRequest.Latitude,
+                            Longitude = donationRequest.Longitude,
+                            TimeFrame = donationRequest.TimeFrame,
+                            Title = donationRequest.Title,
+                            Status = donationRequest.Status,
+                            UserId = donationRequest.User.Id,
+                            User = new UserModel
+                            {
+                                CNIC = donationRequest.User.CNIC,
+                                Email = donationRequest.User.Email,
+                                MobileNumber = donationRequest.User.MobileNumber,
+                                Name = donationRequest.User.Name
+                            }
+                        };
+                        requestList.Add(request);
+                    }
+                }
+
+                return requestList;
+            }
+        }
     }
 }

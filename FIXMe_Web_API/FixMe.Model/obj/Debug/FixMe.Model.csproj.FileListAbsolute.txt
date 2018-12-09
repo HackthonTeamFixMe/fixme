@@ -3,3 +3,4 @@ E:\Projects - Repo\FixMe.API\FixMe.Model\bin\Debug\FixMe.Model.pdb
 E:\Projects - Repo\FixMe.API\FixMe.Model\obj\Debug\FixMe.Model.csproj.CoreCompileInputs.cache
 E:\Projects - Repo\FixMe.API\FixMe.Model\obj\Debug\FixMe.Model.dll
 E:\Projects - Repo\FixMe.API\FixMe.Model\obj\Debug\FixMe.Model.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Model\obj\Debug\FixMe.Model.csprojAssemblyReference.cache

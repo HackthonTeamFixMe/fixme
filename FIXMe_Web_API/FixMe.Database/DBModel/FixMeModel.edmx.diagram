@@ -6,11 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="73abdd77d34c4a33893693a1f38546bd" Name="Diagram1" DisplayType="true">
         <EntityTypeShape EntityType="FixMeModel.User" Width="1.5" PointX="0.75" PointY="1.625" />
-        <EntityTypeShape EntityType="FixMeModel.DonationRequest" Width="1.5" PointX="3" PointY="1" />
-        <AssociationConnector Association="FixMeModel.FK_DonationRequest_User" />
         <EntityTypeShape EntityType="FixMeModel.Donation" Width="1.5" PointX="5.25" PointY="1.875" />
-        <AssociationConnector Association="FixMeModel.FK_Donation_DonationRequest" />
         <AssociationConnector Association="FixMeModel.FK_Donation_User" />
+        <EntityTypeShape EntityType="FixMeModel.DonationRequest" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="FixMeModel.FK_Donation_DonationRequest" />
+        <AssociationConnector Association="FixMeModel.FK_DonationRequest_User" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
