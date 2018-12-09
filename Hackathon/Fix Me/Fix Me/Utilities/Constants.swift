@@ -20,6 +20,8 @@ let REGISTER_USER = "\(BASE_URL)api/account/register"
 let GET_TOKEN = "\(BASE_URL)api/token"
 let ADD_POST = "\(BASE_URL)api/donation/request"
 let GET_POST = "\(BASE_URL)api/donations"
+let CREATE_DONATION = "\(BASE_URL)api/donation/create"
+let GET_USER_POSTS = "\(BASE_URL)api/donations/user"
 
 //Keys
 let BUNDLE_ID = "com.hackathon.Fix-Me"

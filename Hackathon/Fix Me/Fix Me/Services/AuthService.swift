@@ -219,11 +219,6 @@ class AuthService {
     
     func getPosts(id: Int, dataModel: @escaping (PostListModel) -> (), errorMessage: @escaping ErrorMessageHandler, completion: @escaping CompletionHandler) {
         
-        let body: Parameters = [
-            "category": id
-        ]
-        
-        print("\nBody: \(body)\n")
         print("URL: \(GET_POST)\n")
         
         
@@ -239,6 +234,84 @@ class AuthService {
                     if let success = verification.success {
                         if success {
                             dataModel(verification)
+                            completion(true)
+                        } else {
+                            if let message = verification.message {
+                                errorMessage(message)
+                                return
+                            }
+                            completion(false)
+                        }
+                    }
+                } catch _ {
+                    completion(false)
+                }
+                
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func getUserPosts(id: String, dataModel: @escaping (PostListModel) -> (), errorMessage: @escaping ErrorMessageHandler, completion: @escaping CompletionHandler) {
+        
+        print("URL: \(GET_USER_POSTS)\n")
+        
+        
+        Alamofire.request("\(GET_USER_POSTS)/\(id)", method: .get).responseJSON { (response) in
+            
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                
+                do {
+                    
+                    let verification = try JSONDecoder().decode(PostListModel.self, from: data)
+                    
+                    if let success = verification.success {
+                        if success {
+                            dataModel(verification)
+                            completion(true)
+                        } else {
+                            if let message = verification.message {
+                                errorMessage(message)
+                                return
+                            }
+                            completion(false)
+                        }
+                    }
+                } catch _ {
+                    completion(false)
+                }
+                
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func createDonation(DonationRequestId: Int, UserId: String, AmountDonated: Int, errorMessage: @escaping ErrorMessageHandler, completion: @escaping CompletionHandler) {
+        
+        let body: Parameters = [
+            "DonationRequestId": DonationRequestId,
+            "UserId": UserId,
+            "AmountDonated": AmountDonated
+        ]
+        
+        print("\nBody: \(body)\n")
+        print("URL: \(CREATE_DONATION)\n")
+        
+        
+        Alamofire.request(CREATE_DONATION, method: .post, parameters: body).responseJSON { (response) in
+            
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                
+                do {
+                    
+                    let verification = try JSONDecoder().decode(RegistrationModel.self, from: data)
+                    
+                    if let success = verification.success {
+                        if success {
                             completion(true)
                         } else {
                             if let message = verification.message {

@@ -79,7 +79,7 @@ class DonorHomeViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         
         spinner = self.showActivityIndicator(view: self.view)
-
+        
         AuthService.instance.getPosts(id: id, dataModel: { (postData) in
             self.postsData = postData
             self.collectionView.reloadData()
@@ -106,6 +106,10 @@ class DonorHomeViewController: UIViewController, UICollectionViewDelegate, UICol
         if let nav = self.navigationController {
             nav.popViewController(animated: true)
         }
+    }
+    
+    @IBAction func infoButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toUserDetail", sender: nil)
     }
     
 }
@@ -150,9 +154,6 @@ extension DonorHomeViewController {
                         cell.timeFrameDays.text = "\(tF) Days"
                     }
                     if let prog = payLoad[indexPath.row].amountCompletedPercentage {
-                        print(prog)
-//                        let progress = CGFloat(prog) / 100
-//                        cell.progress.
                         cell.progress.progressValue = CGFloat(prog)
                     }
                 }
@@ -164,24 +165,88 @@ extension DonorHomeViewController {
     }
     
     @objc func donationPressed(_ sender: UIButton) {
-        let alertController = UIAlertController(title: BUSINESS_NAME, message: "Are you sure you want to donate?", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Rs. 200"
-            textField.keyboardType = .numberPad
-        }
-        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (success) in
-            if let tf =  alertController.textFields?.first {
-                if tf.text != "" {
-                    print("Amount: \(tf.text!)")
-                } else {
-                    self.displayAlert(title: BUSINESS_NAME, message: "Please provide some money!")
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        if let _ = collectionView.cellForItem(at: indexPath) as? DonorCell {
+            
+            if let data = self.postsData {
+                if let payLoad = data.donationsRequired {
+                    if let amount = payLoad[indexPath.row].amount {
+                        if let remaining = payLoad[indexPath.row].amountRecieved {
+                            if amount == remaining {
+                                self.displayAlert(title: BUSINESS_NAME, message: "Donation for this post is completed. Please donate to some other post :)")
+                            } else {
+                                let alertController = UIAlertController(title: BUSINESS_NAME, message: "Are you sure you want to donate?", preferredStyle: .alert)
+                                alertController.addTextField { (textField) in
+                                    textField.placeholder = "Rs. 200"
+                                    textField.keyboardType = .numberPad
+                                }
+                                alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (success) in
+                                    if let tf =  alertController.textFields?.first {
+                                        if tf.text != "" {
+                                            print("Amount: \(tf.text!)")
+                                            
+                                            if let data = self.postsData {
+                                                if let payLoad = data.donationsRequired {
+                                                    if let DonationRequestId = payLoad[indexPath.row].donationRequestID {
+                                                        if let userId = AuthService.instance.userId {
+                                                            
+                                                            if let amount = payLoad[indexPath.row].amount {
+                                                                if let remaining = payLoad[indexPath.row].amountRecieved {
+                                                                    let leftAmount = amount - remaining
+                                                                    if let enteredAmount = Int(tf.text!) {
+                                                                        if enteredAmount <= leftAmount {
+                                                                            
+                                                                            if let sp = spinner {
+                                                                                if !sp.isHidden {
+                                                                                    sp.isHidden = true
+                                                                                }
+                                                                            }
+                                                                            
+                                                                            spinner = self.showActivityIndicator(view: self.view)
+                                                                            
+                                                                            AuthService.instance.createDonation(DonationRequestId: DonationRequestId, UserId: userId, AmountDonated: Int(tf.text!) ?? 0, errorMessage: { (message) in
+                                                                                if let msg = message {
+                                                                                    self.refreshControl.endRefreshing()
+                                                                                    spinner?.dismissLoader()
+                                                                                    self.displayAlert(title: BUSINESS_NAME, message: msg)
+                                                                                }
+                                                                            }, completion: { (success) in
+                                                                                if success {
+                                                                                    self.refreshControl.endRefreshing()
+                                                                                    spinner?.dismissLoader()
+                                                                                    self.getData(id: self.id)
+                                                                                } else {
+                                                                                    self.refreshControl.endRefreshing()
+                                                                                    spinner?.dismissLoader()
+                                                                                    self.displayAlert(title: BUSINESS_NAME, message: ERROR_MESSAGE)
+                                                                                }
+                                                                            })
+                                                                            
+                                                                        } else {
+                                                                            self.displayAlert(title: BUSINESS_NAME, message: "Entered amount is greater than amount required for this post.")
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            self.displayAlert(title: BUSINESS_NAME, message: "Please provide some money!")
+                                        }
+                                    }
+                                }))
+                                alertController.addAction(UIAlertAction(title: "No", style: .default, handler: { (success) in
+                                    
+                                }))
+                                self.present(alertController, animated: true, completion: nil)
+                            }
+                        }
+                    }
                 }
             }
-        }))
-        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: { (success) in
-            
-        }))
-        self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

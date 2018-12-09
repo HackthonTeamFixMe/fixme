@@ -25,7 +25,7 @@
 		C884ECFC21BB9C48007B20C2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C884ECFB21BB9C48007B20C2 /* AuthService.swift */; };
 		C884ECFE21BBD269007B20C2 /* BasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C884ECFD21BBD269007B20C2 /* BasicModel.swift */; };
 		C884ED0021BBD80C007B20C2 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C884ECFF21BBD80C007B20C2 /* RegistrationViewController.swift */; };
-		C8B5036421BCAFF0003191BB /* DonorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5036321BCAFF0003191BB /* DonorViewController.swift */; };
+		C8B5036421BCAFF0003191BB /* DonorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5036321BCAFF0003191BB /* DonorDetailViewController.swift */; };
 		C8F268AA21BBE716003D85DA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F268A921BBE716003D85DA /* HomeViewController.swift */; };
 		C8F268AC21BBEAB2003D85DA /* DonorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F268AB21BBEAB2003D85DA /* DonorHomeViewController.swift */; };
 		C8F268AE21BBEAC4003D85DA /* InitiatorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F268AD21BBEAC4003D85DA /* InitiatorHomeViewController.swift */; };
@@ -56,7 +56,7 @@
 		C884ECFB21BB9C48007B20C2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C884ECFD21BBD269007B20C2 /* BasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModel.swift; sourceTree = "<group>"; };
 		C884ECFF21BBD80C007B20C2 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		C8B5036321BCAFF0003191BB /* DonorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorViewController.swift; sourceTree = "<group>"; };
+		C8B5036321BCAFF0003191BB /* DonorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorDetailViewController.swift; sourceTree = "<group>"; };
 		C8F268A921BBE716003D85DA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C8F268AB21BBEAB2003D85DA /* DonorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorHomeViewController.swift; sourceTree = "<group>"; };
 		C8F268AD21BBEAC4003D85DA /* InitiatorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiatorHomeViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 				C8F268AB21BBEAB2003D85DA /* DonorHomeViewController.swift */,
 				C8F268AD21BBEAC4003D85DA /* InitiatorHomeViewController.swift */,
 				C8F268AF21BC0AA7003D85DA /* PostViewController.swift */,
-				C8B5036321BCAFF0003191BB /* DonorViewController.swift */,
+				C8B5036321BCAFF0003191BB /* DonorDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 				C884ECF821BB9BFF007B20C2 /* DiscardableImageCacheItem.swift in Sources */,
 				C8F268B021BC0AA7003D85DA /* PostViewController.swift in Sources */,
 				C884ECD021BB8DE2007B20C2 /* ViewController.swift in Sources */,
-				C8B5036421BCAFF0003191BB /* DonorViewController.swift in Sources */,
+				C8B5036421BCAFF0003191BB /* DonorDetailViewController.swift in Sources */,
 				C884ED0021BBD80C007B20C2 /* RegistrationViewController.swift in Sources */,
 				C8F268AE21BBEAC4003D85DA /* InitiatorHomeViewController.swift in Sources */,
 				C8F268AA21BBE716003D85DA /* HomeViewController.swift in Sources */,
@@ -513,7 +513,10 @@
 				DEVELOPMENT_TEAM = 2L7U2WY396;
 				INFOPLIST_FILE = "Fix Me/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hackathon.Fix-Me";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -531,7 +534,10 @@
 				DEVELOPMENT_TEAM = 2L7U2WY396;
 				INFOPLIST_FILE = "Fix Me/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hackathon.Fix-Me";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

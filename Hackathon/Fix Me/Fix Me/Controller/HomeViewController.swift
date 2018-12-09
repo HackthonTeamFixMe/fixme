@@ -36,6 +36,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
+        AuthService.instance.isLoggedIn = false
+        let board: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let userPortal = board.instantiateViewController(withIdentifier: "loginVC")
+        self.present(userPortal, animated: true, completion: nil)
+    }
+    
     @IBAction func donorButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "toDonor", sender: nil)
     }

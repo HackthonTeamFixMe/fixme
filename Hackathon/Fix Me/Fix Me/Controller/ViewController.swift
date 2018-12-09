@@ -129,6 +129,7 @@ class ViewController: UIViewController {
                                             } else {
                                                 AuthService.instance.mobileNumber = number
                                                 AuthService.instance.isLoggedIn = true
+                                                self.performSegue(withIdentifier: "verifiedLogin", sender: sender)
                                             }
                                         }, completion: { (success) in
                                             if success {
