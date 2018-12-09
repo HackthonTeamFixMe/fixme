@@ -1,0 +1,5 @@
+E:\Projects - Repo\FixMe.API\FixMe.Common\bin\Debug\FixMe.Common.dll
+E:\Projects - Repo\FixMe.API\FixMe.Common\bin\Debug\FixMe.Common.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Common\obj\Debug\FixMe.Common.csproj.CoreCompileInputs.cache
+E:\Projects - Repo\FixMe.API\FixMe.Common\obj\Debug\FixMe.Common.dll
+E:\Projects - Repo\FixMe.API\FixMe.Common\obj\Debug\FixMe.Common.pdb

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="FixMeEntities-Web.config Connection String" description="FixMeEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/DBModel.FixMeModel.csdl|res://*/DBModel.FixMeModel.ssdl|res://*/DBModel.FixMeModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=den1.mssql8.gear.host;initial catalog=fixme;persist security info=True;user id=fixme;password=Yy5xe1?r_F9N;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Projects\ -\ Repo\\FixMe\.API\\FixMe\.API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FixMeEntities']/@connectionString" />
+  </parameter>
+</parameters>

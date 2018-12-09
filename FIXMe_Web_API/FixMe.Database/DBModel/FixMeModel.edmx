@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FixMeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonationRequestId" Type="int" Nullable="false" />
+          <Property Name="AmountDonated" Type="bigint" Nullable="false" />
+          <Property Name="DonatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DonatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DonationRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Amount" Type="bigint" Nullable="false" />
+          <Property Name="AmountLeft" Type="bigint" />
+          <Property Name="Category" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="TimeFrame" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MobileInstanceId" Type="varchar(max)" Nullable="false" />
+          <Property Name="MobileKey" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CNIC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="RegisteredOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Donation_DonationRequest">
+          <End Role="DonationRequest" Type="Self.DonationRequest" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonationRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="DonationRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="DonatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationRequest_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="DonationRequest" Type="Self.DonationRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DonationRequest">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FixMeModelStoreContainer">
+          <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonationRequest" EntityType="Self.DonationRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Donation_DonationRequest" Association="Self.FK_Donation_DonationRequest">
+            <End Role="DonationRequest" EntitySet="DonationRequest" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_User" Association="Self.FK_Donation_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationRequest_User" Association="Self.FK_DonationRequest_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="DonationRequest" EntitySet="DonationRequest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FixMeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FixMeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="FixMeModel.User" />
+          <EntitySet Name="DonationRequests" EntityType="FixMeModel.DonationRequest" />
+          <AssociationSet Name="FK_DonationRequest_User" Association="FixMeModel.FK_DonationRequest_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="DonationRequest" EntitySet="DonationRequests" />
+          </AssociationSet>
+          <EntitySet Name="Donations" EntityType="FixMeModel.Donation" />
+          <AssociationSet Name="FK_Donation_DonationRequest" Association="FixMeModel.FK_Donation_DonationRequest">
+            <End Role="DonationRequest" EntitySet="DonationRequests" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_User" Association="FixMeModel.FK_Donation_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MobileInstanceId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MobileKey" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CNIC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RegisteredOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DonationRequests" Relationship="FixMeModel.FK_DonationRequest_User" FromRole="User" ToRole="DonationRequest" />
+          <NavigationProperty Name="Donations" Relationship="FixMeModel.FK_Donation_User" FromRole="User" ToRole="Donation" />
+        </EntityType>
+        <EntityType Name="DonationRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int64" Nullable="false" />
+          <Property Name="AmountLeft" Type="Int64" />
+          <Property Name="Category" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TimeFrame" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="FixMeModel.FK_DonationRequest_User" FromRole="DonationRequest" ToRole="User" />
+          <NavigationProperty Name="Donations" Relationship="FixMeModel.FK_Donation_DonationRequest" FromRole="DonationRequest" ToRole="Donation" />
+        </EntityType>
+        <Association Name="FK_DonationRequest_User">
+          <End Type="FixMeModel.User" Role="User" Multiplicity="1" />
+          <End Type="FixMeModel.DonationRequest" Role="DonationRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DonationRequest">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DonationRequestId" Type="Int32" Nullable="false" />
+          <Property Name="AmountDonated" Type="Int64" Nullable="false" />
+          <Property Name="DonatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DonatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DonationRequest" Relationship="FixMeModel.FK_Donation_DonationRequest" FromRole="Donation" ToRole="DonationRequest" />
+          <NavigationProperty Name="User" Relationship="FixMeModel.FK_Donation_User" FromRole="Donation" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Donation_DonationRequest">
+          <End Type="FixMeModel.DonationRequest" Role="DonationRequest" Multiplicity="1" />
+          <End Type="FixMeModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonationRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="DonationRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_User">
+          <End Type="FixMeModel.User" Role="User" Multiplicity="1" />
+          <End Type="FixMeModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="DonatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FixMeModelStoreContainer" CdmEntityContainer="FixMeEntities">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FixMeModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="RegisteredOn" ColumnName="RegisteredOn" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="MobileKey" ColumnName="MobileKey" />
+                <ScalarProperty Name="MobileInstanceId" ColumnName="MobileInstanceId" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonationRequests">
+            <EntityTypeMapping TypeName="FixMeModel.DonationRequest">
+              <MappingFragment StoreEntitySet="DonationRequest">
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="TimeFrame" ColumnName="TimeFrame" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="AmountLeft" ColumnName="AmountLeft" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="FixMeModel.Donation">
+              <MappingFragment StoreEntitySet="Donation">
+                <ScalarProperty Name="DonatedBy" ColumnName="DonatedBy" />
+                <ScalarProperty Name="DonatedOn" ColumnName="DonatedOn" />
+                <ScalarProperty Name="AmountDonated" ColumnName="AmountDonated" />
+                <ScalarProperty Name="DonationRequestId" ColumnName="DonationRequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

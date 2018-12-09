@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FixMeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FixMeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="FixMeModel.User" />
+    <EntitySet Name="DonationRequests" EntityType="FixMeModel.DonationRequest" />
+    <AssociationSet Name="FK_DonationRequest_User" Association="FixMeModel.FK_DonationRequest_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="DonationRequest" EntitySet="DonationRequests" />
+    </AssociationSet>
+    <EntitySet Name="Donations" EntityType="FixMeModel.Donation" />
+    <AssociationSet Name="FK_Donation_DonationRequest" Association="FixMeModel.FK_Donation_DonationRequest">
+      <End Role="DonationRequest" EntitySet="DonationRequests" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donation_User" Association="FixMeModel.FK_Donation_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MobileInstanceId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MobileKey" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CNIC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="RegisteredOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DonationRequests" Relationship="FixMeModel.FK_DonationRequest_User" FromRole="User" ToRole="DonationRequest" />
+    <NavigationProperty Name="Donations" Relationship="FixMeModel.FK_Donation_User" FromRole="User" ToRole="Donation" />
+  </EntityType>
+  <EntityType Name="DonationRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int64" Nullable="false" />
+    <Property Name="AmountLeft" Type="Int64" />
+    <Property Name="Category" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TimeFrame" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="FixMeModel.FK_DonationRequest_User" FromRole="DonationRequest" ToRole="User" />
+    <NavigationProperty Name="Donations" Relationship="FixMeModel.FK_Donation_DonationRequest" FromRole="DonationRequest" ToRole="Donation" />
+  </EntityType>
+  <Association Name="FK_DonationRequest_User">
+    <End Type="FixMeModel.User" Role="User" Multiplicity="1" />
+    <End Type="FixMeModel.DonationRequest" Role="DonationRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DonationRequest">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DonationRequestId" Type="Int32" Nullable="false" />
+    <Property Name="AmountDonated" Type="Int64" Nullable="false" />
+    <Property Name="DonatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DonatedBy" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DonationRequest" Relationship="FixMeModel.FK_Donation_DonationRequest" FromRole="Donation" ToRole="DonationRequest" />
+    <NavigationProperty Name="User" Relationship="FixMeModel.FK_Donation_User" FromRole="Donation" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Donation_DonationRequest">
+    <End Type="FixMeModel.DonationRequest" Role="DonationRequest" Multiplicity="1" />
+    <End Type="FixMeModel.Donation" Role="Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonationRequest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="DonationRequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donation_User">
+    <End Type="FixMeModel.User" Role="User" Multiplicity="1" />
+    <End Type="FixMeModel.Donation" Role="Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="DonatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

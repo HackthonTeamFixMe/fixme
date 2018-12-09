@@ -1,0 +1,11 @@
+E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\FixMe.Database.dll
+E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\FixMe.Database.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Database\obj\Debug\FixMe.Database.csproj.CoreCompileInputs.cache
+E:\Projects - Repo\FixMe.API\FixMe.Database\obj\Debug\FixMe.Database.dll
+E:\Projects - Repo\FixMe.API\FixMe.Database\obj\Debug\FixMe.Database.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\FixMe.Database.dll.config
+E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\EntityFramework.dll
+E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\EntityFramework.xml
+E:\Projects - Repo\FixMe.API\FixMe.Database\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projects - Repo\FixMe.API\FixMe.Database\obj\Debug\FixMe.Database.csproj.CopyComplete

@@ -1,0 +1,5 @@
+E:\Projects - Repo\FixMe.API\FixMe.Firebase\bin\Release\FixMe.Firebase.dll
+E:\Projects - Repo\FixMe.API\FixMe.Firebase\bin\Release\FixMe.Firebase.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Firebase\obj\Release\FixMe.Firebase.csproj.CoreCompileInputs.cache
+E:\Projects - Repo\FixMe.API\FixMe.Firebase\obj\Release\FixMe.Firebase.dll
+E:\Projects - Repo\FixMe.API\FixMe.Firebase\obj\Release\FixMe.Firebase.pdb

@@ -1,0 +1,16 @@
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Repository.dll
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Repository.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Repository\obj\Debug\FixMe.Repository.csproj.CoreCompileInputs.cache
+E:\Projects - Repo\FixMe.API\FixMe.Repository\obj\Debug\FixMe.Repository.dll
+E:\Projects - Repo\FixMe.API\FixMe.Repository\obj\Debug\FixMe.Repository.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Common.dll
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Database.dll
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Firebase.dll
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Model.dll
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Common.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Database.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Database.dll.config
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Firebase.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Repository\bin\Debug\FixMe.Model.pdb
+E:\Projects - Repo\FixMe.API\FixMe.Repository\obj\Debug\FixMe.Repository.csprojAssemblyReference.cache
+E:\Projects - Repo\FixMe.API\FixMe.Repository\obj\Debug\FixMe.Repository.csproj.CopyComplete

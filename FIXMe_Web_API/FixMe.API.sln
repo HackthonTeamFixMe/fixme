@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixMe.API", "FixMe.API\FixMe.API.csproj", "{448082C5-AC53-4358-B6F8-4D5E868CDD5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixMe.Database", "FixMe.Database\FixMe.Database.csproj", "{E2416484-A78C-4323-99CE-BD2D35BF926C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixMe.Model", "FixMe.Model\FixMe.Model.csproj", "{7137E7EF-191E-4BC9-8A87-9DC50EB6602E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixMe.Firebase", "FixMe.Firebase\FixMe.Firebase.csproj", "{27F47CBF-CC05-4502-BE9A-6C4FC015E68F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixMe.Repository", "FixMe.Repository\FixMe.Repository.csproj", "{A669A835-E149-47AB-8E00-AD2AD689B280}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixMe.Common", "FixMe.Common\FixMe.Common.csproj", "{C3BD518B-4BDE-4B40-82D5-415862FD5F19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{448082C5-AC53-4358-B6F8-4D5E868CDD5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448082C5-AC53-4358-B6F8-4D5E868CDD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448082C5-AC53-4358-B6F8-4D5E868CDD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448082C5-AC53-4358-B6F8-4D5E868CDD5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2416484-A78C-4323-99CE-BD2D35BF926C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2416484-A78C-4323-99CE-BD2D35BF926C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2416484-A78C-4323-99CE-BD2D35BF926C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2416484-A78C-4323-99CE-BD2D35BF926C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7137E7EF-191E-4BC9-8A87-9DC50EB6602E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7137E7EF-191E-4BC9-8A87-9DC50EB6602E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7137E7EF-191E-4BC9-8A87-9DC50EB6602E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7137E7EF-191E-4BC9-8A87-9DC50EB6602E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F47CBF-CC05-4502-BE9A-6C4FC015E68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F47CBF-CC05-4502-BE9A-6C4FC015E68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F47CBF-CC05-4502-BE9A-6C4FC015E68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F47CBF-CC05-4502-BE9A-6C4FC015E68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A669A835-E149-47AB-8E00-AD2AD689B280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A669A835-E149-47AB-8E00-AD2AD689B280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A669A835-E149-47AB-8E00-AD2AD689B280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A669A835-E149-47AB-8E00-AD2AD689B280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3BD518B-4BDE-4B40-82D5-415862FD5F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3BD518B-4BDE-4B40-82D5-415862FD5F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3BD518B-4BDE-4B40-82D5-415862FD5F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3BD518B-4BDE-4B40-82D5-415862FD5F19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A58607FC-DADD-440E-9694-6D4EA6B763ED}
+	EndGlobalSection
+EndGlobal
